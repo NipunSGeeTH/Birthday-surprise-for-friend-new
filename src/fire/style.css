@@ -1,0 +1,59 @@
+@keyframes hueRotate {
+  from { filter: hue-rotate(0deg); }
+  to { filter: hue-rotate(360deg); }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+h1 {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  font-size: 40px; 
+  text-align: center;
+  font-family: "Pacifico", cursive; /* Use correct font name */
+  -webkit-user-select: none;
+  user-select: none;
+  background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: hueRotate 3s linear infinite;
+
+  /* Make text fill full width */
+  width: 100%; 
+  white-space: nowrap; /* Prevent text from wrapping */
+}
+
+.h11{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: full-width;
+  font-size: 40px;
+  
+  text-align: center;
+
+  transform: translate(-50%, -50%);
+ 
+  font-family: "Pacifico", cursive;
+
+  
+  -webkit-user-select: none;
+  user-select: none;
+  background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: hueRotate 3.1s linear infinite;
+  padding-top: 15px;
+}
+
+
+body {
+  margin: 0;
+  background: #020202;
+  cursor: crosshair;
+}
+canvas{display:block}
