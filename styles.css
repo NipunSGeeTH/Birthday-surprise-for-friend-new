@@ -354,13 +354,13 @@
   opacity: var(--bar-opacity, 0);
 }
 .content .text:before {
-  content: "The Move";
+  content: "Sangeeth";
   order: 1;
   text-transform: uppercase;
 }
 .content .text:after {
   order: 2;
-  content: "Space Rangers";
+  content: "Don't touch me";
   opacity: 0.5;
 }
 .content .right {
