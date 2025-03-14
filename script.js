@@ -111,15 +111,31 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-document.getElementById('start-button').addEventListener('click', function() {
-    
+function goFullscreen() {
+    let elem = document.documentElement; // Get full document
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.mozRequestFullScreen) {
+      elem.mozRequestFullScreen(); // Firefox
+    } else if (elem.webkitRequestFullscreen) {
+      elem.webkitRequestFullscreen(); // Chrome, Safari, Edge
+    } else if (elem.msRequestFullscreen) {
+      elem.msRequestFullscreen(); // IE/Edge
+    }
+  }
 
+  // Add event listener to the button
+  document.getElementById('start-button').addEventListener('click', function () {
     let button = this;
     button.classList.add('animate');
+
+    // Call fullscreen function
+    goFullscreen();
+
     setTimeout(() => {
-        button.classList.remove('animate');
+      button.classList.remove('animate');
     }, 300);
-});
+  });
 
 
 

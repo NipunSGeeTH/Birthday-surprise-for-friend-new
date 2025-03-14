@@ -25,6 +25,7 @@
   --c-h: var(--deep-purple);
   --c-s: 100%;
   --c-l: 50%;
+  padding-top: 2vh;
 }
 
 @-webkit-keyframes appear {
