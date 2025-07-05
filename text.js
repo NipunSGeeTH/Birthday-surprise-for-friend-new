@@ -108,14 +108,14 @@ async function loadMessages() {
 
 
   // Set screen and global values
-  let SecondScreenText1 = data.second_screen1;
-  let SecondScreenText2 = data.second_screen2;
-  let SecondScreenText3 = data.second_screen3;
-  let SecondScreenText4 = data.second_screen4;
-  let GlobalMesssageLast = data.global_messages;
+  SecondScreenText1 = data.second_screen1;
+  SecondScreenText2 = data.second_screen2;
+  SecondScreenText3 = data.second_screen3;
+  SecondScreenText4 = data.second_screen4;
+  GlobalMesssageLast = data.global_messages;
 
   // Optional: do something with them
-  console.log({ SecondScreenText1, SecondScreenText2, SecondScreenText3, SecondScreenText4, GlobalMesssageLast });
+  
 }
 
 loadMessages();
