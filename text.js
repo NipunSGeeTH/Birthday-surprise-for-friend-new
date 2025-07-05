@@ -104,7 +104,7 @@ async function loadMessages() {
   message5.textContent = data.message5;
   entertext1.textContent = data.entertext1;
 
-  updateBeforeContent(data["fire-name"]); // after fetch
+  updateBeforeContent("nipun"); // after fetch
 
 
   // Set screen and global values
