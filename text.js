@@ -37,7 +37,7 @@ const defaultData = {
 
 
 //This function to change dynamic island name text
-function updateBeforeContent(newName) {
+function dynamicIslandName(newName) {
   const style = document.createElement('style');
   style.innerHTML = `
     .content .text::before {
@@ -104,7 +104,7 @@ async function loadMessages() {
   message5.textContent = data.message5;
   entertext1.textContent = data.entertext1;
 
-  updateBeforeContent(data["fire-name"]); // after fetch
+  dynamicIslandName(data["fire-name"]); // after fetch
 
 
   // Set screen and global values
