@@ -164,9 +164,36 @@ document.ontouchstart = evt => birthday.onClick(evt)
 
 
 
-document.getElementById('fire-title').innerHTML = "Happy Birthday bossa";
-document.getElementById('fire-name').innerHTML = "ns";
+// Fetch message data from localStorage 
 
+const STORAGE_KEY = "fetched_message_data";
+
+function getCachedMessageData() {
+  const cached = localStorage.getItem(STORAGE_KEY);
+  if (cached) {
+    const parsed = JSON.parse(cached);
+    const age = Date.now() - parsed.timestamp;
+    if (age < 10 * 60 * 1000) {
+      return parsed.data; // still valid
+    }
+  }
+  return null; // expired or not found
+}
+
+// Example usage
+const cachedData = getCachedMessageData();
+if (cachedData) {
+  console.log("Using cached message data:", cachedData);
+
+
+
+  // ✅ New fields: fire-title and fire-name
+  document.getElementById('fire-title').innerHTML = cachedData["fire-title"] || "Happy Birthday";
+  document.getElementById('fire-name').innerHTML = cachedData["fire-name"] || "Friend";
+
+} else {
+  console.log("Cache expired or not found");
+}
 
 
 
