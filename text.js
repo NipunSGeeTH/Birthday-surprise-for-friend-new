@@ -10,21 +10,9 @@ const STORAGE_KEY = "fetched_message_data";
 const EXPIRATION_TIME_MS = 10 * 60 * 1000; // 10 minutes
 
 
-function getRandomIdFromPath() {
-  const segments = window.location.pathname.split('/');
-  const randomId = segments[1] || null;
+const rawQuery = window.location.search; // ?2570ea
+const randomId = rawQuery.startsWith("?") ? rawQuery.slice(1) : rawQuery;
 
-  // After extracting, clean the URL to just https://mydomain.com
-  if (randomId) {
-    window.history.replaceState({}, '', '/');
-  }
-
-  return randomId;
-}
-
-if (window.location.pathname !== '/' && randomId) {
-  window.history.replaceState({}, '', '/');
-}
 
 
 
@@ -51,11 +39,12 @@ const defaultData = {
 };
 
 async function loadMessages() {
-  const randomId = getRandomIdFromPath();
   let data = defaultData;
 
-    if (!randomId) {
-    console.warn("No random_id found in URL path.");
+   const randomId = getRandomIdFromUrl();
+
+  if (!randomId) {
+    console.warn("No random_id found in URL");
     return;
   }
 
@@ -77,7 +66,6 @@ async function loadMessages() {
     // If no valid cache, fetch fresh data
     if (data === defaultData) {
       const res = await fetch(`https://bitymuqzjivftbneisfg.supabase.co/functions/v1/get-message-by-random-id?random_id=${randomId}`);
-     
       if (res.ok) {
         const json = await res.json();
         if (json.message) {
