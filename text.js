@@ -5,17 +5,14 @@ const message4 = document.getElementById('message4');
 const message5 = document.getElementById('message5');
 const entertext1 = document.getElementById('message22');
 
-
 const STORAGE_KEY = "fetched_message_data";
 const EXPIRATION_TIME_MS = 10 * 60 * 1000; // 10 minutes
 
-
-const rawQuery = window.location.search; // ?2570ea
-const randomId = rawQuery.startsWith("?") ? rawQuery.slice(1) : rawQuery;
-
-
-
-
+// ✅ Define this function
+function getRandomIdFromUrl() {
+  const rawQuery = window.location.search; // ?2570ea
+  return rawQuery.startsWith("?") ? rawQuery.slice(1) : rawQuery;
+}
 
 // Default values
 const defaultData = {
@@ -41,7 +38,7 @@ const defaultData = {
 async function loadMessages() {
   let data = defaultData;
 
-   const randomId = getRandomIdFromUrl();
+  const randomId = getRandomIdFromUrl(); // ✅ This now works
 
   if (!randomId) {
     console.warn("No random_id found in URL");
@@ -104,4 +101,3 @@ async function loadMessages() {
 }
 
 loadMessages();
-
