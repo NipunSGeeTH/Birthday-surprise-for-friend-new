@@ -355,7 +355,7 @@
   opacity: var(--bar-opacity, 0);
 }
 .content .text:before {
-  content: "Sangeeth";
+  content: "Geeth";
   order: 1;
   text-transform: uppercase;
 }
