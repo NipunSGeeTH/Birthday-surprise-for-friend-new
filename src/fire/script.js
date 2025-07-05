@@ -164,7 +164,8 @@ document.ontouchstart = evt => birthday.onClick(evt)
 
 
 
-
+document.getElementById('fire-title').innerHTML = "Happy Birthday bossa";
+document.getElementById('fire-name').innerHTML = "ns";
 
 
 

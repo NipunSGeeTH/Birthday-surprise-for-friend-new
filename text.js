@@ -34,14 +34,36 @@ async function loadMessages() {
   let data = defaultData;
 
   try {
-    const res = await fetch("https://bitymuqzjivftbneisfg.supabase.co/functions/v1/get-message-by-random-id?random_id=2570ea");
-    if (res.ok) {
-      const json = await res.json();
-      if (json.message) {
-        data = json.message;
+    // Check if cached data exists and is still valid
+    const cached = localStorage.getItem(STORAGE_KEY);
+    if (cached) {
+      const parsed = JSON.parse(cached);
+      const age = Date.now() - parsed.timestamp;
+
+      if (age < EXPIRATION_TIME_MS && parsed.data) {
+        data = parsed.data;
+        console.log("Loaded data from cache");
+      } else {
+        localStorage.removeItem(STORAGE_KEY); // expired
       }
-    } else {
-      console.warn("Using default values due to response error:", res.status);
+    }
+
+    // If no valid cache, fetch fresh data
+    if (data === defaultData) {
+      const res = await fetch("https://bitymuqzjivftbneisfg.supabase.co/functions/v1/get-message-by-random-id?random_id=2570ea");
+      if (res.ok) {
+        const json = await res.json();
+        if (json.message) {
+          data = json.message;
+          // Cache the result with timestamp
+          localStorage.setItem(STORAGE_KEY, JSON.stringify({
+            timestamp: Date.now(),
+            data: data
+          }));
+        }
+      } else {
+        console.warn("Using default values due to response error:", res.status);
+      }
     }
   } catch (error) {
     console.warn("Fetch failed, using default values:", error);
@@ -67,3 +89,4 @@ async function loadMessages() {
 }
 
 loadMessages();
+
