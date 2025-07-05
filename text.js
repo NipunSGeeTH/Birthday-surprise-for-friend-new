@@ -9,6 +9,16 @@ const entertext1 = document.getElementById('message22');
 const STORAGE_KEY = "fetched_message_data";
 const EXPIRATION_TIME_MS = 10 * 60 * 1000; // 10 minutes
 
+
+function getRandomIdFromPath() {
+  const segments = window.location.pathname.split('/');
+  return segments[1] || null; // adjust index based on your path structure
+}
+
+
+
+
+
 // Default values
 const defaultData = {
   message1: "Power On",
@@ -31,7 +41,13 @@ const defaultData = {
 };
 
 async function loadMessages() {
+  const randomId = getRandomIdFromPath();
   let data = defaultData;
+
+    if (!randomId) {
+    console.warn("No random_id found in URL path.");
+    return;
+  }
 
   try {
     // Check if cached data exists and is still valid
@@ -50,7 +66,8 @@ async function loadMessages() {
 
     // If no valid cache, fetch fresh data
     if (data === defaultData) {
-      const res = await fetch("https://bitymuqzjivftbneisfg.supabase.co/functions/v1/get-message-by-random-id?random_id=2570ea");
+      const res = await fetch(`https://bitymuqzjivftbneisfg.supabase.co/functions/v1/get-message-by-random-id?random_id=${randomId}`);
+     
       if (res.ok) {
         const json = await res.json();
         if (json.message) {
