@@ -188,8 +188,8 @@ if (cachedData) {
 
 
   // ✅ New fields: fire-title and fire-name
-  document.getElementById('fire-title').innerHTML = cachedData["fire-title"] || "Happy Birthday";
-  document.getElementById('fire-name').innerHTML = cachedData["fire-name"] || "Friend";
+  document.getElementById('fire-title').innerHTML = cachedData["fire_title"] || "Happy Birthday";
+  document.getElementById('fire-name').innerHTML = cachedData["fire_name"] || "Friend";
 
 } else {
   console.log("Cache expired or not found");

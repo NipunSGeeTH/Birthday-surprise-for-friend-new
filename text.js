@@ -104,7 +104,7 @@ async function loadMessages() {
   message5.textContent = data.message5;
   entertext1.textContent = data.entertext1;
 
-  dynamicIslandName(data["fire-name"]); // after fetch
+  dynamicIslandName(data["fire_name"]); // after fetch
 
 
   // Set screen and global values
