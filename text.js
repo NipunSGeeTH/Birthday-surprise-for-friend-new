@@ -36,3 +36,9 @@ let GlobalMesssageLast = [
     "Wait more 10 seconds",
     "Good bye !",
 ];
+
+
+document.getElementById("fire-title").innerText = "Happy Birthday";
+
+// Change the text of the second h1
+document.getElementById("fire-name").innerText = "Nipun";
