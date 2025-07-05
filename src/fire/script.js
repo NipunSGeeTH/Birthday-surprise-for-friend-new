@@ -167,10 +167,6 @@ document.ontouchstart = evt => birthday.onClick(evt)
 
 
 
-document.getElementsByClassName('h1')
-
-
-
 
 
 
