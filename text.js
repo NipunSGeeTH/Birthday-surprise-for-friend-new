@@ -31,7 +31,7 @@ const defaultData = {
     "You Are Good Friend",
     "I have to go now",
     "Wait more 10 seconds",
-    "Good bye !",
+    "Good bye !"
   ]
 };
 
@@ -112,7 +112,7 @@ async function loadMessages() {
   SecondScreenText2 = data.second_screen2;
   SecondScreenText3 = data.second_screen3;
   SecondScreenText4 = data.second_screen4;
-  GlobalMesssageLast = data.global_messages;
+  GlobalMesssageLast = data.global_messages.messages;
 
   // Optional: do something with them
   
