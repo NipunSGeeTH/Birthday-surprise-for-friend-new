@@ -35,6 +35,21 @@ const defaultData = {
   ]
 };
 
+
+//This function to change dynamic island name text
+function updateBeforeContent(newName) {
+  const style = document.createElement('style');
+  style.innerHTML = `
+    .content .text::before {
+      content: "${newName}";
+      order: 1;
+      text-transform: uppercase;
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+
 async function loadMessages() {
   let data = defaultData;
 
@@ -88,6 +103,9 @@ async function loadMessages() {
   message4.textContent = data.message4;
   message5.textContent = data.message5;
   entertext1.textContent = data.entertext1;
+
+  updateBeforeContent(data["fire-name"]); // after fetch
+
 
   // Set screen and global values
   let SecondScreenText1 = [data.second_screen1];
