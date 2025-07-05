@@ -22,11 +22,11 @@ const defaultData = {
   message4: "Please Turn up Volume bit.",
   message5: "I have to Say You Somthing",
   entertext1: "Enter your friend's name please",
-  second_screen1: "Okay Sangeeth",
-  second_screen2: "Do you know",
-  second_screen3: "is a Good Friend ",
-  second_screen4: "So, I'm sure",
-  global_messages: [
+  SecondScreenText1: "Okay Sangeeth",
+  SecondScreenText2: "Do you know",
+  SecondScreenText3: "is a Good Friend ",
+  SecondScreenText4: "So, I'm sure",
+  GlobalMesssageLast: [
     "So Yaluu,",
     "You Are Good Friend",
     "I have to go now",
