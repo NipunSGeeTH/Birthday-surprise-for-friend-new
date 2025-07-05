@@ -102,8 +102,8 @@
         "Wait more 10 seconds",
         "Good bye !"
       ],
-      fireTitle: "Happy Birthday",
-      fireName: "Nimal"
+      fire_title: "Happy Birthday",
+      fire_name: "Nimal"
     };
 
     // Fill defaults on load
@@ -122,8 +122,8 @@
 
       document.getElementById("global_messages").value = defaultData.GlobalMesssageLast.join("\n");
 
-      document.getElementById("fire_title").value = defaultData.fireTitle;
-      document.getElementById("fire_name").value = defaultData.fireName;
+      document.getElementById("fire_title").value = defaultData.fire_title;
+      document.getElementById("fire_name").value = defaultData.fire_name;
     };
 
     document.getElementById("birthdayForm").addEventListener("submit", async function(e) {
@@ -143,8 +143,8 @@
         global_messages: {
           messages: document.getElementById("global_messages").value.split("\n")
         },
-        "fire-title": document.getElementById("fire_title").value,
-        "fire-name": document.getElementById("fire_name").value
+        fire_title: document.getElementById("fire_title").value,
+        fire_name: document.getElementById("fire_name").value
       };
 
       try {
