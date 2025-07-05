@@ -12,9 +12,19 @@ const EXPIRATION_TIME_MS = 10 * 60 * 1000; // 10 minutes
 
 function getRandomIdFromPath() {
   const segments = window.location.pathname.split('/');
-  return segments[1] || null; // adjust index based on your path structure
+  const randomId = segments[1] || null;
+
+  // After extracting, clean the URL to just https://mydomain.com
+  if (randomId) {
+    window.history.replaceState({}, '', '/');
+  }
+
+  return randomId;
 }
 
+if (window.location.pathname !== '/' && randomId) {
+  window.history.replaceState({}, '', '/');
+}
 
 
 
