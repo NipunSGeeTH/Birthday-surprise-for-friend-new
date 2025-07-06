@@ -4,84 +4,135 @@
   <meta charset="UTF-8">
   <title>Send Birthday Message</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 2rem;
-      background: #f0f0f0;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 8px;
-      margin: 8px 0;
-      box-sizing: border-box;
-    }
-    label {
-      font-weight: bold;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-    #response {
-      margin-top: 20px;
-      font-weight: bold;
-      color: green;
-    }
+  body {
+    font-family: Arial, sans-serif;
+    padding: 2rem;
+    background: #f0f0f0;
+  }
+  .container {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+  .form-image-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+  .form-image-row label {
+    min-width: 120px;
+    font-weight: bold;
+  }
+  .form-image-row input,
+  .form-image-row textarea {
+    flex: 1;
+    padding: 8px;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  .form-image-row img {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background: #fff;
+  }
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  #response {
+    margin-top: 20px;
+    font-weight: bold;
+    color: green;
+  }
   </style>
 </head>
 <body>
 
   <h2>Send Birthday Message</h2>
-  
-  <form id="birthdayForm">
-    <label>Message 1</label>
-    <input type="text" id="message1">
-
-    <label>Message 2</label>
-    <input type="text" id="message2">
-
-    <label>Message 3</label>
-    <input type="text" id="message3">
-
-    <label>Message 4</label>
-    <input type="text" id="message4">
-
-    <label>Message 5</label>
-    <input type="text" id="message5">
-
-    <label>Enter Text 1</label>
-    <input type="text" id="entertext1">
-
-    <label>Second Screen 1</label>
-    <input type="text" id="second_screen1">
-
-    <label>Second Screen 2</label>
-    <input type="text" id="second_screen2">
-
-    <label>Second Screen 3</label>
-    <input type="text" id="second_screen3">
-
-    <label>Second Screen 4</label>
-    <input type="text" id="second_screen4">
-
-    <label>Global Messages (one per line)</label>
-    <textarea id="global_messages" rows="5"></textarea>
-
-    <label>Fire Title</label>
-    <input type="text" id="fire_title">
-
-    <label>Fire Name</label>
-    <input type="text" id="fire_name">
-
-    <button type="submit">Send Message</button>
-  </form>
-
-  <div id="response"></div>
+  first view demo and get idea, then create your own one from  changin below contents and get shareable link, and supprise your friends
+  <a href="https://mydomain.com/demo"> demo </a>
+  <div class="container">
+    <div class="form-section">
+      <form id="birthdayForm">
+        <div class="form-image-row">
+          <label for="message1">Message 1</label>
+          <input type="text" id="message1">
+          <img src="https://placehold.co/80x60?text=Msg+1" alt="Message 1">
+        </div>
+        <div class="form-image-row">
+          <label for="message2">Message 2</label>
+          <input type="text" id="message2">
+          <img src="https://placehold.co/80x60?text=Msg+2" alt="Message 2">
+        </div>
+        <div class="form-image-row">
+          <label for="message3">Message 3</label>
+          <input type="text" id="message3">
+          <img src="https://placehold.co/80x60?text=Msg+3" alt="Message 3">
+        </div>
+        <div class="form-image-row">
+          <label for="message4">Message 4</label>
+          <input type="text" id="message4">
+          <img src="https://placehold.co/80x60?text=Msg+4" alt="Message 4">
+        </div>
+        <div class="form-image-row">
+          <label for="message5">Message 5</label>
+          <input type="text" id="message5">
+          <img src="https://placehold.co/80x60?text=Msg+5" alt="Message 5">
+        </div>
+        <div class="form-image-row">
+          <label for="entertext1">Enter Text 1</label>
+          <input type="text" id="entertext1">
+          <img src="https://placehold.co/80x60?text=Enter+Text+1" alt="Enter Text 1">
+        </div>
+        <div class="form-image-row">
+          <label for="second_screen1">Second Screen 1</label>
+          <input type="text" id="second_screen1">
+          <img src="https://placehold.co/80x60?text=Screen+1" alt="Second Screen 1">
+        </div>
+        <div class="form-image-row">
+          <label for="second_screen2">Second Screen 2</label>
+          <input type="text" id="second_screen2">
+          <img src="https://placehold.co/80x60?text=Screen+2" alt="Second Screen 2">
+        </div>
+        <div class="form-image-row">
+          <label for="second_screen3">Second Screen 3</label>
+          <input type="text" id="second_screen3">
+          <img src="https://placehold.co/80x60?text=Screen+3" alt="Second Screen 3">
+        </div>
+        <div class="form-image-row">
+          <label for="second_screen4">Second Screen 4</label>
+          <input type="text" id="second_screen4">
+          <img src="https://placehold.co/80x60?text=Screen+4" alt="Second Screen 4">
+        </div>
+        <div class="form-image-row">
+          <label for="global_messages">Global Messages</label>
+          <textarea id="global_messages" rows="3"></textarea>
+          <img src="https://placehold.co/80x60?text=Global+Msg" alt="Global Messages">
+        </div>
+        <div class="form-image-row">
+          <label for="fire_title">Fire Title</label>
+          <input type="text" id="fire_title">
+          <img src="https://placehold.co/80x60?text=Fire+Title" alt="Fire Title">
+        </div>
+        <div class="form-image-row">
+          <label for="fire_name">Fire Name</label>
+          <input type="text" id="fire_name">
+          <img src="https://placehold.co/80x60?text=Fire+Name" alt="Fire Name">
+        </div>
+        <button type="submit">Get link</button>
+      </form>
+      <div id="response"></div>
+    </div>
+  </div>
 
   <script>
     const defaultData = {
@@ -157,7 +208,41 @@
         });
 
         const result = await res.json();
-        document.getElementById("response").textContent = "✅ Response: " + JSON.stringify(result);
+        if (result && result.random_id) {
+          const shareUrl = `https://my-domain.com/?${result.random_id}`;
+          document.getElementById("response").innerHTML = `
+            <div>
+              Use this link to share this surprise message,<br>
+              <input type="text" id="shareLink" value="${shareUrl}" readonly style="width:80%;margin-top:8px;">
+              <br>
+              <button id="copyBtn">Copy Link</button>
+              <button id="shareBtn">Share Link</button>
+            </div>
+          `;
+          document.getElementById("copyBtn").onclick = function() {
+            const linkInput = document.getElementById("shareLink");
+            linkInput.select();
+            linkInput.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+            this.textContent = "Copied!";
+            setTimeout(() => { this.textContent = "Copy Link"; }, 1500);
+          };
+          document.getElementById("shareBtn").onclick = function() {
+            const shareUrl = document.getElementById("shareLink").value;
+            if (navigator.share) {
+              navigator.share({
+                title: "Birthday Surprise",
+                text: "Use this link to share this surprise message",
+                url: shareUrl
+              });
+            } else {
+              alert("Sharing not supported on this browser.");
+            }
+          };
+        } else {
+          document.getElementById("response").textContent = "✅ Response: " + JSON.stringify(result);
+        }
+
       } catch (error) {
         document.getElementById("response").textContent = "❌ Error: " + error;
       }
