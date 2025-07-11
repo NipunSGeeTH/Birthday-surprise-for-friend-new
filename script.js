@@ -268,7 +268,7 @@ document.getElementById('trabsparentrectangle').addEventListener('click', functi
        
         // Clear the interval after 10 seconds (2 cycles)
         
-    }, 3000);
+    }, 30000);
 });
 
 
@@ -299,7 +299,7 @@ function handleInteraction2() {
                     document.body.style.backgroundColor = "black";
                     window.location.href = "src/fire/index.html";
                 }
-            }, 4000); // how long each message stays
+            }, 7000); // how long each message stays
 
         }, delay * index);
     });
