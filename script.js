@@ -1,11 +1,3 @@
-
-
-
-
-
-
-
-
 document.addEventListener("DOMContentLoaded", function() {
     const messages = [
         { id: "message1" },
@@ -94,6 +86,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
     
 });
+
 
 
 function goFullscreen() {
@@ -275,12 +268,13 @@ document.getElementById('trabsparentrectangle').addEventListener('click', functi
        
         // Clear the interval after 10 seconds (2 cycles)
         
-    }, 30000);
+    }, 3000);
 });
 
 
 
 document.getElementById('fireRectangle').addEventListener('touchmove', handleInteraction2);
+
 function handleInteraction2() {
     let happybirthdaymusic = document.getElementById('happybithdaymusic');
     document.getElementById('fireRectangle').style.display = "none";
@@ -288,28 +282,27 @@ function handleInteraction2() {
     document.getElementsByClassName("px__screen__frame")[0].style.backgroundImage = "url('src/img/gh.jpg')";
 
     const messageslast = GlobalMesssageLast;
-
-    let delay = 5000; 
-    let totalDelay = delay * messageslast.length; // Total delay for all messages
+    let delay = 5000; // Delay between messages
 
     messageslast.forEach((message, index) => {
         setTimeout(() => {
             const messageElement = document.createElement('div');
-            messageElement.id = 'lastscreen1';
+            messageElement.className = 'lastscreen-message1';
             messageElement.textContent = message;
             document.body.appendChild(messageElement);
 
             setTimeout(() => {
                 messageElement.remove();
-                // Check if it's the last message to hide the 'iphonescreen'
+
                 if (index === messageslast.length - 1) {
                     document.getElementById("iphonescreen").style.display = "none";
                     document.body.style.backgroundColor = "black";
                     window.location.href = "src/fire/index.html";
-
                 }
-            }, 7000);
-            
+            }, 4000); // how long each message stays
+
         }, delay * index);
     });
 }
+
+

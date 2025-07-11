@@ -1871,10 +1871,53 @@ height: 90px;
 
 
 
+.lastscreen-message1 {
+  display: block;
+
+  position: absolute;
+  top: 25%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Center both axes */
+  font-weight: bold;
+  align-items: center;
+  text-align: center;
+  color: transparent;
+
+  background: linear-gradient(#0ae2ff, #cdf009, #dd1eee);
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  background-color: rgba(0, 0, 0, 0);
+  opacity: 0;
+  z-index: 1000;
+
+  animation: fadeInFadeOut1 3s ease-in-out forwards;
+
+  font-size: 200%;
+  line-height: 1.5;
+}
 
 
 
 
 
+@keyframes fadeInFadeOut1 {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  20% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+  80% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -40%);
+  }
+}
 
 

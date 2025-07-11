@@ -35,6 +35,12 @@ const defaultData = {
   ]
 };
 
+// Declare global variables
+var SecondScreenText1 = defaultData.SecondScreenText1;
+var SecondScreenText2 = defaultData.SecondScreenText2;
+var SecondScreenText3 =   defaultData.SecondScreenText3;
+var SecondScreenText4 = defaultData.SecondScreenText4;
+var GlobalMesssageLast =  defaultData.GlobalMesssageLast;
 
 //This function to change dynamic island name text
 function dynamicIslandName(newName) {
@@ -60,41 +66,30 @@ async function loadMessages() {
     return;
   }
 
-  try {
-    // Check if cached data exists and is still valid
-    const cached = localStorage.getItem(STORAGE_KEY);
-    if (cached) {
-      const parsed = JSON.parse(cached);
-      const age = Date.now() - parsed.timestamp;
+try {
+  // Always remove any old cache (optional: check for STORAGE_KEY existence first)
+  localStorage.removeItem(STORAGE_KEY);
 
-      if (age < EXPIRATION_TIME_MS && parsed.data) {
-        data = parsed.data;
-        console.log("Loaded data from cache");
-      } else {
-        localStorage.removeItem(STORAGE_KEY); // expired
-      }
-    }
+  // Fetch fresh data
+  const res = await fetch(`https://bitymuqzjivftbneisfg.supabase.co/functions/v1/get-message-by-random-id?random_id=${randomId}`);
+  if (res.ok) {
+    const json = await res.json();
+    if (json.message) {
+      data = json.message;
 
-    // If no valid cache, fetch fresh data
-    if (data === defaultData) {
-      const res = await fetch(`https://bitymuqzjivftbneisfg.supabase.co/functions/v1/get-message-by-random-id?random_id=${randomId}`);
-      if (res.ok) {
-        const json = await res.json();
-        if (json.message) {
-          data = json.message;
-          // Cache the result with timestamp
-          localStorage.setItem(STORAGE_KEY, JSON.stringify({
-            timestamp: Date.now(),
-            data: data
-          }));
-        }
-      } else {
-        console.warn("Using default values due to response error:", res.status);
-      }
+      // Store fresh data with timestamp
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        timestamp: Date.now(),
+        data: data
+      }));
     }
-  } catch (error) {
-    console.warn("Fetch failed, using default values:", error);
+  } else {
+    console.warn("Using default values due to response error:", res.status);
   }
+} catch (error) {
+  console.warn("Fetch failed, using default values:", error);
+}
+
 
   // Update content
   message1.textContent = data.message1;
