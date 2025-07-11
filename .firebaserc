@@ -1,18 +1,51 @@
+
+
 {
-  "projects": {
-    "default": "whatinsideits"
-  },
-  "targets": {
-    "whatinsideits": {
-      "hosting": {
-        "mainSite": [
-          "giftoyou",
-          "it4you",
-          "itforyou",
-          "whatit"
-        ]
-      }
+  "hosting": [
+    {
+      "target": "whatinsideits",
+      "public": ".",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ]
+    },
+    {
+      "target": "giftoyou",
+      "public": ".",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ]
+    },
+    {
+      "target": "it4you",
+      "public": ".",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ]
+    },
+    {
+      "target": "itforyou",
+      "public": ".",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ]
+    },
+    {
+      "target": "whatit",
+      "public": ".",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ]
     }
-  },
-  "etags": {}
+  ]
 }
