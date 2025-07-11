@@ -1,4 +1,4 @@
- const defaultData = {
+const defaultData = {
       message1: "Power On",
       message2: "Hi' Sangeeth",
       message3: "I'm Your New Phone",
@@ -67,6 +67,72 @@
       document.getElementById("fire_name").value = defaultData.fire_name;
     });
 
+    // Add this function for showing the fullscreen popup with all links
+    function showLinksPopup(urls) {
+      const popup = document.createElement('div');
+      popup.className = 'links-popup';
+
+      popup.innerHTML = `
+        <div class="links-popup-content">
+          <button class="close-links-popup" onclick="document.body.removeChild(document.querySelector('.links-popup'));">×</button>
+          <h2>🎉 Your Birthday Surprise Links</h2>
+          <div class="links-list">
+            ${urls.map((url, i) => `
+              <div class="link-row">
+                <span class="site-label">Site ${i + 1}:</span>
+                <input type="text" value="${url}" readonly id="linkInput${i}">
+                <button class="copy-link-btn" data-index="${i}">Copy</button>
+           
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+      document.body.appendChild(popup);
+
+      // Copy button functionality
+      popup.querySelectorAll('.copy-link-btn').forEach(btn => {
+        btn.addEventListener('click', async function() {
+          const idx = this.getAttribute('data-index');
+          const input = document.getElementById(`linkInput${idx}`);
+          try {
+            await navigator.clipboard.writeText(input.value);
+            this.textContent = "Copied!";
+            setTimeout(() => { this.textContent = "Copy"; }, 2000);
+          } catch {
+            input.select();
+            document.execCommand("copy");
+            this.textContent = "Copied!";
+            setTimeout(() => { this.textContent = "Copy"; }, 2000);
+          }
+        });
+      });
+
+      // Share button functionality
+      popup.querySelectorAll('.share-link-btn').forEach(btn => {
+        btn.addEventListener('click', async function() {
+          const idx = this.getAttribute('data-index');
+          const url = document.getElementById(`linkInput${idx}`).value;
+          if (navigator.share) {
+            try {
+              await navigator.share({
+                title: "Birthday Surprise! 🎉",
+                text: "Someone created a special birthday message for you!",
+                url
+              });
+            } catch {}
+          } else {
+            try {
+              await navigator.clipboard.writeText(url);
+              alert("Link copied to clipboard! You can now paste it anywhere to share.");
+            } catch {
+              alert("Sharing not supported on this browser. Please copy the link manually.");
+            }
+          }
+        });
+      });
+    }
+
     document.getElementById("birthdayForm").addEventListener("submit", async function(e) {
       e.preventDefault();
       
@@ -105,59 +171,19 @@
         });
 
         const result = await res.json();
-        
+
+        // --- Update: handle 5 URLs ---
         if (result && result.random_id) {
-          const shareUrl = `https://my-domain.com/?${result.random_id}`;
-          document.getElementById("response").innerHTML = `
-            <div class="response success">
-              <h3>🎉 Success! Your birthday message is ready!</h3>
-              <p>Share this link with your friend to surprise them:</p>
-              <div class="share-controls">
-                <input type="text" id="shareLink" value="${shareUrl}" readonly>
-                <button id="copyBtn">Copy</button>
-                <button id="shareBtn" class="share-btn">Share</button>
-              </div>
-            </div>
-          `;
-          
-          // Copy functionality
-          document.getElementById("copyBtn").addEventListener('click', async function() {
-            const linkInput = document.getElementById("shareLink");
-            try {
-              await navigator.clipboard.writeText(linkInput.value);
-              this.textContent = "Copied!";
-              setTimeout(() => { this.textContent = "Copy"; }, 2000);
-            } catch (err) {
-              linkInput.select();
-              document.execCommand("copy");
-              this.textContent = "Copied!";
-              setTimeout(() => { this.textContent = "Copy"; }, 2000);
-            }
-          });
-          
-          // Share functionality
-          document.getElementById("shareBtn").addEventListener('click', async function() {
-            const shareUrl = document.getElementById("shareLink").value;
-            if (navigator.share) {
-              try {
-                await navigator.share({
-                  title: "Birthday Surprise! 🎉",
-                  text: "Someone created a special birthday message for you!",
-                  url: shareUrl
-                });
-              } catch (err) {
-                console.log('Share cancelled');
-              }
-            } else {
-              try {
-                await navigator.clipboard.writeText(shareUrl);
-                alert("Link copied to clipboard! You can now paste it anywhere to share.");
-              } catch (err) {
-                alert("Sharing not supported on this browser. Please copy the link manually.");
-              }
-            }
-          });
-          
+          // Example: 5 different domains
+      const urls = [
+  `https://whatinsideits.web.app/?${result.random_id}`,
+  `https://giftoyou.web.app/?${result.random_id}`,
+  `https://it4you.web.app/?${result.random_id}`,
+  `https://itforyou.web.app/?${result.random_id}`,
+  `https://whatit.web.app/?${result.random_id}`
+];
+          showLinksPopup(urls);
+          document.getElementById("response").innerHTML = "";
         } else {
           document.getElementById("response").innerHTML = `
             <div class="response success">

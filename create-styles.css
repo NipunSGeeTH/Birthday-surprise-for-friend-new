@@ -1,4 +1,4 @@
- * {
+* {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -318,6 +318,87 @@
       background: #0056b3;
     }
 
+    .links-popup {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .links-popup-content {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2rem;
+      max-width: 95vw;
+      width: 500px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      position: relative;
+      text-align: center;
+    }
+
+    .close-links-popup {
+      position: absolute;
+      top: 10px; right: 10px;
+      background: #ff4757;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 32px; height: 32px;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .links-list {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .link-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #f8f9fa;
+      padding: 0.8rem;
+      border-radius: 10px;
+    }
+
+    .site-label {
+      font-weight: 600;
+      min-width: 70px;
+    }
+
+    .link-row input {
+      flex: 1;
+      padding: 0.5rem;
+      border-radius: 8px;
+      border: 2px solid #e1e8ed;
+      font-size: 0.95rem;
+    }
+
+    .link-row button {
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      background: #28a745;
+      color: #fff;
+      transition: all 0.2s;
+    }
+
+    .link-row button.share-link-btn {
+      background: #007bff;
+    }
+
+    .link-row button:hover {
+      opacity: 0.85;
+    }
+
     /* Mobile Responsive */
     @media (max-width: 768px) {
       .form-row {
@@ -368,6 +449,26 @@
         width: 100%;
       }
     }
+
+    @media (max-width: 600px) {
+  .links-popup-content {
+    width: 95vw;
+    padding: 1rem;
+  }
+  .link-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  .site-label {
+    margin-bottom: 0.2rem;
+  }
+  .link-row input,
+  .link-row button {
+    width: 100%;
+    margin: 0;
+  }
+}
 
     @media (max-width: 480px) {
       body {
