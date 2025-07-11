@@ -1,5 +1,18 @@
 {
   "projects": {
     "default": "whatinsideits"
-  }
+  },
+  "targets": {
+    "whatinsideits": {
+      "hosting": {
+        "mainSite": [
+          "giftoyou",
+          "it4you",
+          "itforyou",
+          "whatit"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
