@@ -1,270 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simple Comment Section</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Send Birthday Message</title>
+    <link rel="stylesheet" href="./create-styles.css">
 </head>
-
 <body>
-
-  <div id="unsupported-screen">
-    This site does not support your screen size. <br /><br />
-
-    use a smartphone to access this website.
-  </div>
-  <button id="start-button" class="powbutton" type="button" value="Go"> Start Animation</button>
-
-
-  <input id="deep-purple" name="theme" type="radio" checked="checked" />
-  <!-- <input id="gold" name="theme" type="radio"/>
-<input id="space-black" name="theme" type="radio"/>
-<input id="silver" name="theme" type="radio"/>
-<input id="random" name="theme" type="radio"/>
-<input id="zoom" name="zoom" type="checkbox"/> -->
-  <div class="scene" id="full-screen">
-    <!-- <div class="pallette">
-    <label class="swatch" tabIndex="0" for="deep-purple"></label>
-    <label class="swatch" tabIndex="0" for="gold"></label>
-    <label class="swatch" tabIndex="0" for="space-black"></label>
-    <label class="swatch" tabIndex="0" for="silver"></label>
-    <label class="swatch" tabIndex="0" for="random">
-      <div class="icon"></div>
-      <div class="tooltip">CMD + click to save</div>
-    </label>
-  </div> -->
-    <!-- <div class="zoom-con">
-    <label class="swatch" tabIndex="0" for="zoom"></label>
-  </div> -->
-
-  
-  
-    <div class="phone-con">
-      <div class="phone">
-        <div class="buttons">
-          <div class="left">
-            <div class="button"></div>
-            <div class="button"></div>
-            <div class="button"></div>
-          </div>
-          <div class="right">
-            <div class="button"></div>
-          </div>
-        </div>
-        <div class="camera"></div>
-        <div class="screen-container">
-          <div class="bg">
-
-            <div class="deep-purple">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-              <div id="iphonescreen">
-                <!-- <div class="px">
-                  <div class="px__body">
-                    <div class="px__body__cut"></div>
-                    <div class="px__body__speaker"></div>
-                    <div class="px__body__sensor"></div>
-            
-                    <div class="px__body__mute"></div>
-                    <div class="px__body__up"></div>
-                    <div class="px__body__down"></div>
-                    <div class="px__body__right"></div>
-                  </div>
-             -->
-
-    
-
-
-                    <div class="px__screen__frame">
-
-
-                      <div class="notch-container" tabIndex="0">
-                        <div class="notch">
-                          <div class="content">
-                            <div class="left">
-                              <div class="tile"></div>
-                              <div class="text"></div>
-                            </div>
-                            <div class="right"></div>
-                            <div class="bar">
-                              <div class="duration"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="notch-blur"></div>
-                      <div class="screen"> </div>
-
-
-
-
-
-                      <div id="message-container">
-
-                        <audio id="clickSound" src="src/music/music.mp3" preload="auto"></audio>
-                        <div class="message mess" id="message1">Power On</div>
-
-
-                        <div class="message mess" id="message2"> Hi' Sangeeth</div>
-                        <div class="message mess" id="message3"> I'm Your New IPhone </div>
-                        <div class="message mess" id="message4"> Please Turn up volume bit. </div>
-                        <div class="message mess" id="message5">I have to Say You Somthing</div>
-                        <div class="message mess" id="message6">Swipe Screen Please</div>
-                        <div id="swipfirst">
-
-
-                        </div>
-                      </div>
-
-
-
-                      <div id="input-container">
-                        <div class="mes" id="message22">Can you enter your friend's name please</div>
-                        <input type="text" id="txtSearch" placeholder="Type Here" spellcheck="false"
-                          oninput="capitalizeFirstLetter()" />
-
-                        <script>
-                          function capitalizeFirstLetter() {
-                            const input = document.getElementById('txtSearch');
-                            let value = input.value;
-                            if (value.length > 0) {
-                              input.value = value.charAt(0).toUpperCase() + value.slice(1);
-                            }
-                          }
-                        </script>
-                        <input type="button" id="btnSearch" Value="enter" onclick="doSomething();" />
-                        <div class="error" id="nameError"></div>
-                      </div>
-
-                      <div id="message-container2"></div>
-
-
-                      <div id="but3"></div>
-
-
-                      <audio id="clickS" src="src/music/click.mp3"></audio>
-                      <audio id="ringtone" src="src/music/iphonering.mp3"></audio>
-                      <div id="ringName"> </div>
-
-
-                    </div>
-
-                  </div>
-
-                  <div id="trabsparentrectangle"></div>
-                  <audio id="happybithdaymusic" src="src/music/happybirthday.mp3"></audio>
-
-                  <div id="fireRectangle"></div>
-
-
-                  <div id="firingAnimationRectangle"></div>
-
-                  <div id="lastscreen1"></div>
-
-
-
-
-                  <i class="fa fa-apple"></i>
-
-
-                </div>
-              </div>
-
+  <div class="container">
+    <div class="header">
+      <h1>🎉 Birthday Surprise</h1>
+      <p>Create personalized birthday surprises for your friends.</p>
+      <a href="./index.html" class="demo-link">View Demo</a>
+      <p class="demo-desc">
+        This demo shows how Nipun can create a special birthday message for Sangeeth. Simply fill out the form below, generate a unique link, and share it with your friend to make their day extra special!
+      </p>
+    </div>
+
+    <div class="form-container">
+      <form id="birthdayForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="message1">Message 1</label>
+            <div class="input-wrapper">
+              <input type="text" id="message1" placeholder="Power On">
+              <button type="button" class="mobile-image-btn" onclick="showImage('https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop', 'Message 1 - Power On')">📱</button>
             </div>
           </div>
+          <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop" alt="Message 1" class="field-image">
+        </div>
 
+        <div class="form-row">
+          <div class="form-group">
+            <label for="message2">Message 2</label>
+            <div class="input-wrapper">
+              <input type="text" id="message2" placeholder="Hi Sangeeth">
+              <button type="button" class="mobile-image-btn" onclick="showImage('https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?w=400&h=300&fit=crop', 'Message 2 - Greeting')">👋</button>
+            </div>
+          </div>
+          <img src="https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?w=400&h=300&fit=crop" alt="Message 2" class="field-image">
+        </div>
 
-          <script src="text.js"></script>
-          <script src="script.js"></script>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="message3">Message 3</label>
+            <div class="input-wrapper">
+              <input type="text" id="message3" placeholder="I'm Your New Phone">
+              <button type="button" class="mobile-image-btn" onclick="showImage('https://images.unsplash.com/photo-1580894894513-541e068a3e2b?w=400&h=300&fit=crop', 'Message 3 - New Phone')">📞</button>
+            </div>
+          </div>
+          <img src="https://images.unsplash.com/photo-1580894894513-541e068a3e2b?w=400&h=300&fit=crop" alt="Message 3" class="field-image">
+        </div>
 
-</body>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="message4">Message 4</label>
+            <div class="input-wrapper">
+              <input type="text" id="message4" placeholder="Please Turn up Volume bit.">
+              <button type="button" class="mobile-image-btn" onclick="showImage('https://images.unsplash.com/photo-1554213352-5ffe6534af08?w=400&h=300&fit=crop', 'Message 4 - Volume Up')">🔊</button>
+            </div>
+          </div>
+          <img src="https://images.unsplash.com/photo-1554213352-5ffe6534af08?w=400&h=300&fit=crop" alt="Message 4" class="field-image">
+        </div>
 
-</html>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="message5">Message 5</label>
+            <div class="input-wrapper">
+              <input type="text" id="message5" placeholder="I have to Say You Something">
+              <button type="button" class="mobile-image-btn" onclick="showImage('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop', 'Message 5 - Important Message')">💬</button>
+            </div>
+          </div>
+          <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop" alt="Message 5" class="field-image">
+        </div>
 
+        <div class="form-row">
+          <div class="form-group">
+            <label for="entertext1">Enter Text 1</label>
+            <div class="input-wrapper">
+              <input type="text" id="entertext1" placeholder="Enter your friend's name please">
+              <button type="button" class="mobile-image-btn" onclick="showImage('https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=400&h=300&fit=crop', 'Enter Text - Friend Name')">✍️</button>
+            </div>
+          </div>
+          <img src="https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=400&h=300&fit=crop" alt="Enter Text" class="field-image">
+        </div>
 
+        <div class="form-row">
+          <div class="form-group">
+            <label for="second_screen1">Second Screen 1</label>
+            <div class="input-wrapper">
+              <input type="text" id="second_screen1" placeholder="Okay Sangeeth">
+              <button type="button" class="mobile-image-btn" onclick="showImage('https://images.unsplash.com/photo-1593642532744-d377ab507dc8?w=400&h=300&fit=crop', 'Second Screen 1')">🖥️</button>
+            </div>
+          </div>
+          <img src="https://images.unsplash.com/photo-1593642532744-d377ab507dc8?w=400&h=300&fit=crop" alt="Screen 1" class="field-image">
+        </div>
 
-<!--         
-      </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="second_screen2">Second Screen 2</label>
+            <div class="input-wrapper">
+              <input type="text" id="second_screen2" placeholder="Do you know">
+              <button type="button" class="mobile-image-btn" onclick="showImage('https://images.unsplash.com/photo-1593642634443-44adaa06623a?w=400&h=300&fit=crop', 'Second Screen 2')">❓</button>
+            </div>
+          </div>
+          <img src="https://images.unsplash.com/photo-1593642634443-44adaa06623a?w=400&h=300&fit=crop" alt="Screen 2" class="field-image">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="second_screen3">Second Screen 3</label> {Previously Entered Text comes automatically here} is a Good Friend 
+            <div class="input-wrapper">
+              <input type="text" id="second_screen3" placeholder="is a Good Friend">
+              <button type="button" class="mobile-image-btn" onclick="showImage('https://images.unsplash.com/photo-1593642634627-c4ab5898b3e2?w=400&h=300&fit=crop', 'Second Screen 3')">👥</button>
+            </div>
+          </div>
+          <img src="https://images.unsplash.com/photo-1593642634627-c4ab5898b3e2?w=400&h=300&fit=crop" alt="Screen 3" class="field-image">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="second_screen4">Second Screen 4</label>
+            <div class="input-wrapper">
+              <input type="text" id="second_screen4" placeholder="So, I'm sure">
+              <button type="button" class="mobile-image-btn" onclick="showImage('https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?w=400&h=300&fit=crop', 'Second Screen 4')">✅</button>
+            </div>
+          </div>
+          <img src="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?w=400&h=300&fit=crop" alt="Screen 4" class="field-image">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="global_messages">Global Messages</label>
+            <div class="input-wrapper">
+              <textarea id="global_messages" rows="5" placeholder="Enter each message on a new line"></textarea>
+              <button type="button" class="mobile-image-btn" onclick="showImage('https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop', 'Global Messages')">🌍</button>
+            </div>
+          </div>
+          <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop" alt="Global Messages" class="field-image">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fire_title">Fireworks animation Title</label>
+            <div class="input-wrapper">
+              <input type="text" id="fire_title" placeholder="Happy Birthday">
+              <button type="button" class="mobile-image-btn" onclick="showImage('https://images.unsplash.com/photo-1464207687429-7505649dae38?w=400&h=300&fit=crop', 'Fire Title - Celebration')">🔥</button>
+            </div>
+          </div>
+          <img src="https://images.unsplash.com/photo-1464207687429-7505649dae38?w=400&h=300&fit=crop" alt="Fire Title" class="field-image">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fire_name">Fireworks animation Name</label>
+            <div class="input-wrapper">
+              <input type="text" id="fire_name" placeholder="Nimal">
+              <button type="button" class="mobile-image-btn" onclick="showImage('https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop', 'Fire Name - Birthday Person')">🎂</button>
+            </div>
+          </div>
+          <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop" alt="Fire Name" class="field-image">
+        </div>
+
+        <button type="submit" class="submit-btn">
+          <span class="btn-text">Generate Link</span>
+        </button>
+      </form>
+
+      <div id="response"></div>
     </div>
   </div>
+
+  <!-- Image Overlay for Mobile -->
+  <div class="image-overlay" id="imageOverlay">
+    <div class="image-overlay-content">
+      <button class="close-overlay" onclick="hideImage()">×</button>
+      <img id="overlayImage" src="" alt="">
+      <div class="overlay-label" id="overlayLabel"></div>
+    </div>
   </div>
 
-  <script type="module" src="script.js"></script>
-
-  <script src="text.js"></script>
-  < </body>
-
-</html> -->
+  <script src="./create-js.js"> </script>
+</body>
+</html>
