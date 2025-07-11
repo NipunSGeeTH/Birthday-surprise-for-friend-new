@@ -1,125 +1,789 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Birthday Message Creator</title>
-    <link rel="stylesheet" href="create-styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Send Birthday Message</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 1rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #ff6b6b, #feca57);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    .header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    .demo-link {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.8rem 1.5rem;
+      background: rgba(255,255,255,0.2);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .demo-link:hover {
+      background: rgba(255,255,255,0.3);
+      transform: translateY(-2px);
+    }
+
+    .form-container {
+      padding: 2rem;
+    }
+
+    .form-row {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+      background: #f8f9fa;
+      padding: 1rem;
+      border-radius: 15px;
+      border: 2px solid #e1e8ed;
+      transition: all 0.3s ease;
+    }
+
+    .form-row:hover {
+      border-color: #667eea;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .form-group {
+      flex: 1;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #333;
+      font-size: 1rem;
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      flex: 1;
+      padding: 0.8rem;
+      border: 2px solid #e1e8ed;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      background: white;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .field-image {
+      width: 120px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid #e1e8ed;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .field-image:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    .mobile-image-btn {
+      display: none;
+      width: 40px;
+      height: 40px;
+      background: #667eea;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .mobile-image-btn:hover {
+      background: #5a6fd8;
+      transform: scale(1.1);
+    }
+
+    .mobile-image-btn:active {
+      transform: scale(0.95);
+    }
+
+    .image-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.8);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .image-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .image-overlay-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      max-width: 90%;
+      max-height: 90%;
+      position: relative;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .image-overlay.show .image-overlay-content {
+      transform: translateX(0);
+    }
+
+    .image-overlay img {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .close-overlay {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #ff4757;
+      color: white;
+      border: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .overlay-label {
+      text-align: center;
+      margin-top: 1rem;
+      font-weight: 600;
+      color: #333;
+      font-size: 1.1rem;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    .response {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: #f8f9fa;
+      border-radius: 15px;
+      border: 2px solid #e1e8ed;
+    }
+
+    .response.success {
+      background: #d4edda;
+      border-color: #c3e6cb;
+      color: #155724;
+    }
+
+    .response.error {
+      background: #f8d7da;
+      border-color: #f5c6cb;
+      color: #721c24;
+    }
+
+    .share-controls {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .share-controls input {
+      flex: 1;
+      padding: 0.8rem;
+      border: 2px solid #e1e8ed;
+      border-radius: 10px;
+      font-family: monospace;
+      font-size: 0.9rem;
+    }
+
+    .share-controls button {
+      padding: 0.8rem 1.5rem;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .share-controls button:hover {
+      background: #218838;
+      transform: translateY(-2px);
+    }
+
+    .share-controls button.share-btn {
+      background: #007bff;
+    }
+
+    .share-controls button.share-btn:hover {
+      background: #0056b3;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .form-row {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .field-image {
+        display: none;
+      }
+
+      .mobile-image-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .input-wrapper {
+        position: relative;
+        width: 100%;
+      }
+
+      .form-group {
+        width: 100%;
+      }
+
+      .header {
+        padding: 1.5rem;
+      }
+
+      .header h1 {
+        font-size: 2rem;
+      }
+
+      .form-container {
+        padding: 1.5rem;
+      }
+
+      .share-controls {
+        flex-direction: column;
+      }
+
+      .share-controls button {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 0.5rem;
+      }
+
+      .header {
+        padding: 1rem;
+      }
+
+      .header h1 {
+        font-size: 1.5rem;
+      }
+
+      .form-container {
+        padding: 1rem;
+      }
+
+      .form-row {
+        padding: 0.8rem;
+      }
+    }
+
+    /* Loading animation */
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid #f3f3f3;
+      border-top: 3px solid #667eea;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Pulse animation for mobile buttons */
+    .mobile-image-btn::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: rgba(102, 126, 234, 0.3);
+      transform: translate(-50%, -50%);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <h1>🎉 Birthday Message Creator</h1>
-            <p>Create personalized birthday surprises for your friends!</p>
-            <div class="demo-link">
-                <a href="https://mydomain.com/demo" class="btn-demo">View Demo</a>
-            </div>
-        </header>
-
-        <div class="form-container">
-            <form id="birthdayForm">
-                <div class="section">
-                    <h3>📱 Initial Messages</h3>
-                    <div class="form-group">
-                        <label for="message1">Message 1</label>
-                        <input type="text" id="message1" placeholder="Power On">
-                        <div class="preview-icon">📱</div>
-                    </div>
-                    <div class="form-group">
-                        <label for="message2">Message 2</label>
-                        <input type="text" id="message2" placeholder="Hi' baba">
-                        <div class="preview-icon">👋</div>
-                    </div>
-                    <div class="form-group">
-                        <label for="message3">Message 3</label>
-                        <input type="text" id="message3" placeholder="I'm Your New Phone">
-                        <div class="preview-icon">📲</div>
-                    </div>
-                    <div class="form-group">
-                        <label for="message4">Message 4</label>
-                        <input type="text" id="message4" placeholder="Please Turn up Volume bit.">
-                        <div class="preview-icon">🔊</div>
-                    </div>
-                    <div class="form-group">
-                        <label for="message5">Message 5</label>
-                        <input type="text" id="message5" placeholder="I have to Say You Something">
-                        <div class="preview-icon">💬</div>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <h3>👤 Interactive Section</h3>
-                    <div class="form-group">
-                        <label for="entertext1">Name Request</label>
-                        <input type="text" id="entertext1" placeholder="Enter your friend's name please">
-                        <div class="preview-icon">✏️</div>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <h3>💭 Personal Messages</h3>
-                    <div class="form-group">
-                        <label for="second_screen1">Personal Message 1</label>
-                        <input type="text" id="second_screen1" placeholder="Okay [Name]">
-                        <div class="preview-icon">👀</div>
-                    </div>
-                    <div class="form-group">
-                        <label for="second_screen2">Personal Message 2</label>
-                        <input type="text" id="second_screen2" placeholder="Do you know">
-                        <div class="preview-icon">❓</div>
-                    </div>
-                    <div class="form-group">
-                        <label for="second_screen3">Personal Message 3</label>
-                        <input type="text" id="second_screen3" placeholder="is a Good Friend">
-                        <div class="preview-icon">❤️</div>
-                    </div>
-                    <div class="form-group">
-                        <label for="second_screen4">Personal Message 4</label>
-                        <input type="text" id="second_screen4" placeholder="So, I'm sure">
-                        <div class="preview-icon">✨</div>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <h3>🎊 Final Celebration</h3>
-                    <div class="form-group">
-                        <label for="global_messages">Final Messages (one per line)</label>
-                        <textarea id="global_messages" rows="5" placeholder="So Yaluu,&#10;You Are Good Friend&#10;I have to go now&#10;Wait more 10 seconds&#10;Good bye !"></textarea>
-                        <div class="preview-icon">📝</div>
-                    </div>
-                    <div class="form-group">
-                        <label for="fire_title">Celebration Title</label>
-                        <input type="text" id="fire_title" placeholder="Happy Birthday">
-                        <div class="preview-icon">🎂</div>
-                    </div>
-                    <div class="form-group">
-                        <label for="fire_name">Birthday Person's Name</label>
-                        <input type="text" id="fire_name" placeholder="Nimal">
-                        <div class="preview-icon">🎁</div>
-                    </div>
-                </div>
-
-                <button type="submit" class="btn-submit">
-                    <span class="btn-text">Create Magic Link</span>
-                    <div class="loader"></div>
-                </button>
-            </form>
-        </div>
+  <div class="container">
+    <div class="header">
+      <h1>🎉 Birthday Message Creator</h1>
+      <p>Create personalized birthday surprises for your friends</p>
+      <a href="./index.html" class="demo-link">View Demo</a>
     </div>
 
-    <!-- Popup Modal -->
-    <div id="popup" class="popup-overlay">
-        <div class="popup-content">
-            <div class="popup-header">
-                <h3 id="popup-title">Success!</h3>
-                <button class="popup-close" onclick="closePopup()">&times;</button>
+    <div class="form-container">
+      <form id="birthdayForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="message1">Message 1</label>
+            <div class="input-wrapper">
+              <input type="text" id="message1" placeholder="Power On">
+              <button type="button" class="mobile-image-btn" onclick="showImage('https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop', 'Message 1 - Power On')">📱</button>
             </div>
-            <div class="popup-body">
-                <div id="popup-message"></div>
-            </div>
+          </div>
+          <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop" alt="Message 1" class="field-image">
         </div>
-    </div>
 
-    <script src="create-js.js"></script>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="message2">Message 2</label>
+            <div class="input-wrapper">
+              <input type="text" id="message2" placeholder="Hi' baba">
+              <button type="button" class="mobile-image-btn" onclick="showImage('https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?w=400&h=300&fit=crop', 'Message 2 - Greeting')">👋</button>
+            </div>
+          </div>
+          <img src="https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?w=400&h=300&fit=crop" alt="Message 2" class="field-image">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="message3">Message 3</label>
+            <div class="input-wrapper">
+              <input type="text" id="message3" placeholder="I'm Your New Phone">
+              <button type="button" class="mobile-image-btn" onclick="showImage('https://images.unsplash.com/photo-1580894894513-541e068a3e2b?w=400&h=300&fit=crop', 'Message 3 - New Phone')">📞</button>
+            </div>
+          </div>
+          <img src="https://images.unsplash.com/photo-1580894894513-541e068a3e2b?w=400&h=300&fit=crop" alt="Message 3" class="field-image">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="message4">Message 4</label>
+            <div class="input-wrapper">
+              <input type="text" id="message4" placeholder="Please Turn up Volume bit.">
+              <button type="button" class="mobile-image-btn" onclick="showImage('https://images.unsplash.com/photo-1554213352-5ffe6534af08?w=400&h=300&fit=crop', 'Message 4 - Volume Up')">🔊</button>
+            </div>
+          </div>
+          <img src="https://images.unsplash.com/photo-1554213352-5ffe6534af08?w=400&h=300&fit=crop" alt="Message 4" class="field-image">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="message5">Message 5</label>
+            <div class="input-wrapper">
+              <input type="text" id="message5" placeholder="I have to Say You Something">
+              <button type="button" class="mobile-image-btn" onclick="showImage('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop', 'Message 5 - Important Message')">💬</button>
+            </div>
+          </div>
+          <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop" alt="Message 5" class="field-image">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="entertext1">Enter Text 1</label>
+            <div class="input-wrapper">
+              <input type="text" id="entertext1" placeholder="Enter your friend's name please">
+              <button type="button" class="mobile-image-btn" onclick="showImage('https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=400&h=300&fit=crop', 'Enter Text - Friend Name')">✍️</button>
+            </div>
+          </div>
+          <img src="https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=400&h=300&fit=crop" alt="Enter Text" class="field-image">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="second_screen1">Second Screen 1</label>
+            <div class="input-wrapper">
+              <input type="text" id="second_screen1" placeholder="Okay Sangeeth">
+              <button type="button" class="mobile-image-btn" onclick="showImage('https://images.unsplash.com/photo-1593642532744-d377ab507dc8?w=400&h=300&fit=crop', 'Second Screen 1')">🖥️</button>
+            </div>
+          </div>
+          <img src="https://images.unsplash.com/photo-1593642532744-d377ab507dc8?w=400&h=300&fit=crop" alt="Screen 1" class="field-image">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="second_screen2">Second Screen 2</label>
+            <div class="input-wrapper">
+              <input type="text" id="second_screen2" placeholder="Do you know">
+              <button type="button" class="mobile-image-btn" onclick="showImage('https://images.unsplash.com/photo-1593642634443-44adaa06623a?w=400&h=300&fit=crop', 'Second Screen 2')">❓</button>
+            </div>
+          </div>
+          <img src="https://images.unsplash.com/photo-1593642634443-44adaa06623a?w=400&h=300&fit=crop" alt="Screen 2" class="field-image">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="second_screen3">Second Screen 3</label>
+            <div class="input-wrapper">
+              <input type="text" id="second_screen3" placeholder="is a Good Friend">
+              <button type="button" class="mobile-image-btn" onclick="showImage('https://images.unsplash.com/photo-1593642634627-c4ab5898b3e2?w=400&h=300&fit=crop', 'Second Screen 3')">👥</button>
+            </div>
+          </div>
+          <img src="https://images.unsplash.com/photo-1593642634627-c4ab5898b3e2?w=400&h=300&fit=crop" alt="Screen 3" class="field-image">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="second_screen4">Second Screen 4</label>
+            <div class="input-wrapper">
+              <input type="text" id="second_screen4" placeholder="So, I'm sure">
+              <button type="button" class="mobile-image-btn" onclick="showImage('https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?w=400&h=300&fit=crop', 'Second Screen 4')">✅</button>
+            </div>
+          </div>
+          <img src="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?w=400&h=300&fit=crop" alt="Screen 4" class="field-image">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="global_messages">Global Messages</label>
+            <div class="input-wrapper">
+              <textarea id="global_messages" rows="4" placeholder="Enter each message on a new line"></textarea>
+              <button type="button" class="mobile-image-btn" onclick="showImage('https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop', 'Global Messages')">🌍</button>
+            </div>
+          </div>
+          <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop" alt="Global Messages" class="field-image">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fire_title">Fire Title</label>
+            <div class="input-wrapper">
+              <input type="text" id="fire_title" placeholder="Happy Birthday">
+              <button type="button" class="mobile-image-btn" onclick="showImage('https://images.unsplash.com/photo-1464207687429-7505649dae38?w=400&h=300&fit=crop', 'Fire Title - Celebration')">🔥</button>
+            </div>
+          </div>
+          <img src="https://images.unsplash.com/photo-1464207687429-7505649dae38?w=400&h=300&fit=crop" alt="Fire Title" class="field-image">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fire_name">Fire Name</label>
+            <div class="input-wrapper">
+              <input type="text" id="fire_name" placeholder="Nimal">
+              <button type="button" class="mobile-image-btn" onclick="showImage('https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop', 'Fire Name - Birthday Person')">🎂</button>
+            </div>
+          </div>
+          <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop" alt="Fire Name" class="field-image">
+        </div>
+
+        <button type="submit" class="submit-btn">
+          <span class="btn-text">Generate Link</span>
+        </button>
+      </form>
+
+      <div id="response"></div>
+    </div>
+  </div>
+
+  <!-- Image Overlay for Mobile -->
+  <div class="image-overlay" id="imageOverlay">
+    <div class="image-overlay-content">
+      <button class="close-overlay" onclick="hideImage()">×</button>
+      <img id="overlayImage" src="" alt="">
+      <div class="overlay-label" id="overlayLabel"></div>
+    </div>
+  </div>
+
+  <script>
+    const defaultData = {
+      message1: "Power On",
+      message2: "Hi'Sangeeth",
+      message3: "I'm Your New Phone",
+      message4: "Please Turn up Volume bit.",
+      message5: "I have to Say You Something",
+      entertext1: "Enter your friend's name please",
+      SecondScreenText1: "Okay Sangeeth",
+      SecondScreenText2: "Do you know",
+      SecondScreenText3: "is a Good Friend",
+      SecondScreenText4: "So, I'm sure",
+      GlobalMesssageLast: [
+        "So Yaluu,",
+        "You Are Good Friend",
+        "I have to go now",
+        "Wait more 10 seconds",
+        "Good bye !"
+      ],
+      fire_title: "Happy Birthday",
+      fire_name: "Nimal"
+    };
+
+    // Image overlay functions
+    function showImage(imageSrc, label) {
+      const overlay = document.getElementById('imageOverlay');
+      const overlayImage = document.getElementById('overlayImage');
+      const overlayLabel = document.getElementById('overlayLabel');
+      
+      overlayImage.src = imageSrc;
+      overlayLabel.textContent = label;
+      overlay.classList.add('show');
+    }
+
+    function hideImage() {
+      const overlay = document.getElementById('imageOverlay');
+      overlay.classList.remove('show');
+    }
+
+    // Close overlay when clicking outside
+    document.getElementById('imageOverlay').addEventListener('click', function(e) {
+      if (e.target === this) {
+        hideImage();
+      }
+    });
+
+    // Close overlay on escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        hideImage();
+      }
+    });
+
+    // Fill defaults on load
+    window.addEventListener('load', () => {
+      document.getElementById("message1").value = defaultData.message1;
+      document.getElementById("message2").value = defaultData.message2;
+      document.getElementById("message3").value = defaultData.message3;
+      document.getElementById("message4").value = defaultData.message4;
+      document.getElementById("message5").value = defaultData.message5;
+      document.getElementById("entertext1").value = defaultData.entertext1;
+      document.getElementById("second_screen1").value = defaultData.SecondScreenText1;
+      document.getElementById("second_screen2").value = defaultData.SecondScreenText2;
+      document.getElementById("second_screen3").value = defaultData.SecondScreenText3;
+      document.getElementById("second_screen4").value = defaultData.SecondScreenText4;
+      document.getElementById("global_messages").value = defaultData.GlobalMesssageLast.join("\n");
+      document.getElementById("fire_title").value = defaultData.fire_title;
+      document.getElementById("fire_name").value = defaultData.fire_name;
+    });
+
+    document.getElementById("birthdayForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      
+      const submitBtn = document.querySelector('.submit-btn');
+      const btnText = submitBtn.querySelector('.btn-text');
+      
+      // Show loading state
+      btnText.innerHTML = '<span class="loading"></span> Generating...';
+      submitBtn.disabled = true;
+
+      const data = {
+        message1: document.getElementById("message1").value,
+        message2: document.getElementById("message2").value,
+        message3: document.getElementById("message3").value,
+        message4: document.getElementById("message4").value,
+        message5: document.getElementById("message5").value,
+        entertext1: document.getElementById("entertext1").value,
+        second_screen1: document.getElementById("second_screen1").value,
+        second_screen2: document.getElementById("second_screen2").value,
+        second_screen3: document.getElementById("second_screen3").value,
+        second_screen4: document.getElementById("second_screen4").value,
+        global_messages: {
+          messages: document.getElementById("global_messages").value.split("\n").filter(msg => msg.trim())
+        },
+        fire_title: document.getElementById("fire_title").value,
+        fire_name: document.getElementById("fire_name").value
+      };
+
+      try {
+        const res = await fetch("https://bitymuqzjivftbneisfg.supabase.co/functions/v1/add-birthday-message", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data)
+        });
+
+        const result = await res.json();
+        
+        if (result && result.random_id) {
+          const shareUrl = `https://my-domain.com/?${result.random_id}`;
+          document.getElementById("response").innerHTML = `
+            <div class="response success">
+              <h3>🎉 Success! Your birthday message is ready!</h3>
+              <p>Share this link with your friend to surprise them:</p>
+              <div class="share-controls">
+                <input type="text" id="shareLink" value="${shareUrl}" readonly>
+                <button id="copyBtn">Copy</button>
+                <button id="shareBtn" class="share-btn">Share</button>
+              </div>
+            </div>
+          `;
+          
+          // Copy functionality
+          document.getElementById("copyBtn").addEventListener('click', async function() {
+            const linkInput = document.getElementById("shareLink");
+            try {
+              await navigator.clipboard.writeText(linkInput.value);
+              this.textContent = "Copied!";
+              setTimeout(() => { this.textContent = "Copy"; }, 2000);
+            } catch (err) {
+              linkInput.select();
+              document.execCommand("copy");
+              this.textContent = "Copied!";
+              setTimeout(() => { this.textContent = "Copy"; }, 2000);
+            }
+          });
+          
+          // Share functionality
+          document.getElementById("shareBtn").addEventListener('click', async function() {
+            const shareUrl = document.getElementById("shareLink").value;
+            if (navigator.share) {
+              try {
+                await navigator.share({
+                  title: "Birthday Surprise! 🎉",
+                  text: "Someone created a special birthday message for you!",
+                  url: shareUrl
+                });
+              } catch (err) {
+                console.log('Share cancelled');
+              }
+            } else {
+              try {
+                await navigator.clipboard.writeText(shareUrl);
+                alert("Link copied to clipboard! You can now paste it anywhere to share.");
+              } catch (err) {
+                alert("Sharing not supported on this browser. Please copy the link manually.");
+              }
+            }
+          });
+          
+        } else {
+          document.getElementById("response").innerHTML = `
+            <div class="response success">
+              <h3>✅ Success!</h3>
+              <p>Response: ${JSON.stringify(result)}</p>
+            </div>
+          `;
+        }
+
+      } catch (error) {
+        document.getElementById("response").innerHTML = `
+          <div class="response error">
+            <h3>❌ Error occurred</h3>
+            <p>Something went wrong: ${error.message}</p>
+            <p>Please try again.</p>
+          </div>
+        `;
+      } finally {
+        // Reset button state
+        btnText.textContent = 'Generate Link';
+        submitBtn.disabled = false;
+      }
+    });
+  </script>
 </body>
 </html>
