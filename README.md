@@ -5,6 +5,14 @@ An interactive and beautiful **Birthday Surprise** experience that mimics an **i
 
 ---
 
+## 🚀 Create Your Own and Surprise Your Friends
+
+Click the button below to generate your own birthday surprise and share it with your friends:
+
+# 👉 [Create Your Surprise](https://whatinsideits.web.app/create.html)
+
+---
+
 ## 🌐 Live Demos
 
 Choose any of the deployed links to see the surprise in action:
