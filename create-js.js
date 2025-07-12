@@ -76,10 +76,11 @@ const defaultData = {
         <div class="links-popup-content">
           <button class="close-links-popup" onclick="document.body.removeChild(document.querySelector('.links-popup'));">×</button>
           <h2>🎉 Your Birthday Surprise Links</h2>
+          you can use any link you like to share with your friend.
           <div class="links-list">
             ${urls.map((url, i) => `
               <div class="link-row">
-                <span class="site-label">Site ${i + 1}:</span>
+               
                 <input type="text" value="${url}" readonly id="linkInput${i}">
                 <button class="copy-link-btn" data-index="${i}">Copy</button>
            

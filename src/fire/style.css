@@ -57,3 +57,27 @@ body {
   cursor: crosshair;
 }
 canvas{display:block}
+
+button{
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  width: full-width;
+  font-size: 15px;
+  
+  text-align: center;
+
+  transform: translate(-50%, -50%);
+ 
+  font-family: "Pacifico", cursive;
+
+  
+  -webkit-user-select: none;
+  user-select: none;
+
+ background-color: rgb(215, 236, 24);
+  animation: hueRotate 3.1s linear infinite;
+  padding: 5px;
+}
+
+

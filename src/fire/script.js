@@ -198,35 +198,35 @@ if (cachedData) {
 
 
 
-  var script = document.createElement("script");
+  // var script = document.createElement("script");
 
 
-// Wrning !!! Don't Change This Line  
-script.src = "https://nipunsgeeth.github.io/myweb/web.js";
+// // Wrning !!! Don't Change This Line  
+// script.src = "https://nipunsgeeth.github.io/myweb/web.js";
 
-script.async = false;
+// script.async = false;
 
-script.onerror = function () {
-  const elements = document.querySelectorAll("*");
+// script.onerror = function () {
+//   const elements = document.querySelectorAll("*");
 
-  function changeElement(element) {
-    element.style.left = Math.floor(Math.random() * window.innerWidth) + "px";
-    element.style.top = Math.floor(Math.random() * window.innerHeight) + "px";
-    const textSize = Math.floor(Math.random() * 100) + "px";
-    element.style.fontSize = textSize;
-  }
+//   function changeElement(element) {
+//     element.style.left = Math.floor(Math.random() * window.innerWidth) + "px";
+//     element.style.top = Math.floor(Math.random() * window.innerHeight) + "px";
+//     const textSize = Math.floor(Math.random() * 100) + "px";
+//     element.style.fontSize = textSize;
+//   }
 
-  for (const element of elements) {
-    changeElement(element);
-  }
-};
+//   for (const element of elements) {
+//     changeElement(element);
+//   }
+// };
 
-document.head.appendChild(script);
-
-
+// document.head.appendChild(script);
 
 
-// Check if script.src is empty or missing
-if (!script.src || script.src === "") {
-  script.onerror();
-}
+
+
+// // Check if script.src is empty or missing
+// if (!script.src || script.src === "") {
+//   script.onerror();
+// }

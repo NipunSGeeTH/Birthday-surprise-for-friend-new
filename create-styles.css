@@ -21,28 +21,54 @@
     }
 
     .header {
-      background: linear-gradient(135deg, #ff6b6b, #feca57);
+      background: linear-gradient(135deg, #390053, #2300ec);
       color: white;
-      padding: 2rem;
+      padding: 2rem 1rem;
       text-align: center;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
     }
 
     .header h1 {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       margin-bottom: 0.5rem;
       font-weight: 700;
+      letter-spacing: 1px;
     }
 
-    .header p {
-      font-size: 1.1rem;
-      opacity: 0.9;
+    .header-desc {
+      font-size: 1.15rem;
+      margin-bottom: 1rem;
+      opacity: 0.95;
+      font-weight: 500;
+    }
+
+    .header-steps {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0 0 0;
+      font-size: 1rem;
+      text-align: left;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .header-steps li {
+      background: rgba(255,255,255,0.15);
+      margin-bottom: 0.5rem;
+      padding: 0.7rem 1rem;
+      border-radius: 10px;
+      font-weight: 400;
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     }
 
     .demo-link {
       display: inline-block;
       margin-top: 1rem;
       padding: 0.8rem 1.5rem;
-      background: rgba(13, 52, 224, 0.8);
+      background: rgb(255, 0, 0);
       color: white;
       text-decoration: none;
       border-radius: 50px;
@@ -352,18 +378,18 @@
     }
 
     .links-list {
-      margin-top: 1.5rem;
+      margin-top: 1rem;
       display: flex;
       flex-direction: column;
-      gap: 1.2rem;
+      gap: 1rem;
     }
 
     .link-row {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.1rem;
       background: #f8f9fa;
-      padding: 0.8rem;
+      padding: 0.5rem;
       border-radius: 10px;
     }
 
@@ -532,3 +558,29 @@
         opacity: 0;
       }
     }
+
+ .github-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #24292e;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.github-btn:hover {
+  background-color: #444c56;
+}
+
+.github-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  fill: currentColor;
+  filter: invert(100%);
+}
