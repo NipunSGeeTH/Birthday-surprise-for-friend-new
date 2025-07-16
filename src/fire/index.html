@@ -10,19 +10,28 @@
 <body>
     <h1 id="fire-title">Happy Birthday</h1>
     <h1 id="fire-name" class="h11">Sangeeth</h1>
-    <a href="./../../create.html">
+    <!-- <a href="./../../create.html">
       <button id="create-own-btn" style="display: none;">Create Your Own</button>
-    </a>
+    </a> -->
 
+<div id="sky-message" style="display:none;position:absolute;top:20%;left:50%;transform:translate(-50%,-50%);font-size:20px;font-family:Pacifico,cursive;color:#fffc35;z-index:10;text-shadow:0 0 10px rgb(0, 255, 242);">
+  Touch on the sky few times!
+</div>
 <canvas id="birthday"></canvas>
-   
     
     <script src="script.js"></script>
     <script>
     setTimeout(function() {
       document.getElementById('create-own-btn').style.display = 'block';
     }, 7000);
- 
+
+    // Show sky message after 5s, hide after 9s
+    setTimeout(function() {
+      document.getElementById('sky-message').style.display = 'block';
+      setTimeout(function() {
+        document.getElementById('sky-message').style.display = 'none';
+      }, 4000);
+    }, 5000);
   </script>
   
 </body>
