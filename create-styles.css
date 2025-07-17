@@ -171,7 +171,9 @@
     }
 
     .mobile-image-btn {
-      display: none;
+      display: flex; /* Always show on all devices */
+      align-items: center;
+      justify-content: center;
       width: 40px;
       height: 40px;
       background: #667eea;
@@ -182,6 +184,7 @@
       font-size: 1.2rem;
       transition: all 0.3s ease;
       position: relative;
+      margin-left: 8px; /* Add spacing for desktop */
     }
 
     .mobile-image-btn:hover {
@@ -437,13 +440,11 @@
       }
 
       .mobile-image-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
         position: absolute;
         right: 10px;
         top: 50%;
         transform: translateY(-50%);
+        margin-left: 0;
       }
 
       .input-wrapper {
