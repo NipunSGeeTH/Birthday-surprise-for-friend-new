@@ -1,4 +1,3 @@
-
 # 🎉 Happy Birthday Surprise Web Page 🎂
 
 An interactive and beautiful **Birthday Surprise** experience that mimics an **iPhone 14 Pro** interface with messages, animations, and fireworks — all using HTML, CSS, and JavaScript.
@@ -10,6 +9,14 @@ An interactive and beautiful **Birthday Surprise** experience that mimics an **i
 Click the button below to generate your own birthday surprise and share it with your friends:
 
 # 👉 [Create Your Surprise](https://whatinsideits.web.app/create.html)
+
+---
+
+## 📱 Want the Old iPhone Style?
+
+If you want the classic iPhone-style birthday surprise, check out the previous version here:
+
+- 👉 [Old iPhone Birthday Surprise](https://github.com/NipunSGeeTH/Birthday-surprise-for-friend)
 
 ---
 
