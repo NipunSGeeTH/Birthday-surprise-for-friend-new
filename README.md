@@ -20,9 +20,10 @@ If you want the classic iPhone-style birthday surprise, check out the previous v
 
 ---
 
-## 🌐 Live Demos
+# 🌐 Live Demos
 
-Choose any of the deployed links to see the surprise in action:
+Choose any of the deployed links to see the surprise in action
+### 🎁 This demo is a special birthday surprise created by **Nipun** (Sangeeth's best friend) for **Sangeeth** (the birthday boy).
 
 - 🔗 [https://whatinsideits.web.app](https://whatinsideits.web.app)
 - 🔗 [https://giftoyou.web.app](https://giftoyou.web.app)
