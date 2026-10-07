@@ -5,8 +5,16 @@
       "public": ".",
       "ignore": [
         "firebase.json",
+        ".firebaserc",
+        "**/.git/**",
+        "**/.firebase/**",
+        "**/.github/**",
+        "**/.vscode/**",
         "**/.*",
-        "**/node_modules/**"
+        "**/node_modules/**",
+        "**/*.log",
+        "README.md",
+        "LICENSE"
       ]
     },
     {
@@ -14,8 +22,16 @@
       "public": ".",
       "ignore": [
         "firebase.json",
+        ".firebaserc",
+        "**/.git/**",
+        "**/.firebase/**",
+        "**/.github/**",
+        "**/.vscode/**",
         "**/.*",
-        "**/node_modules/**"
+        "**/node_modules/**",
+        "**/*.log",
+        "README.md",
+        "LICENSE"
       ]
     },
     {
@@ -23,8 +39,16 @@
       "public": ".",
       "ignore": [
         "firebase.json",
+        ".firebaserc",
+        "**/.git/**",
+        "**/.firebase/**",
+        "**/.github/**",
+        "**/.vscode/**",
         "**/.*",
-        "**/node_modules/**"
+        "**/node_modules/**",
+        "**/*.log",
+        "README.md",
+        "LICENSE"
       ]
     },
     {
@@ -32,8 +56,16 @@
       "public": ".",
       "ignore": [
         "firebase.json",
+        ".firebaserc",
+        "**/.git/**",
+        "**/.firebase/**",
+        "**/.github/**",
+        "**/.vscode/**",
         "**/.*",
-        "**/node_modules/**"
+        "**/node_modules/**",
+        "**/*.log",
+        "README.md",
+        "LICENSE"
       ]
     },
     {
@@ -41,8 +73,16 @@
       "public": ".",
       "ignore": [
         "firebase.json",
+        ".firebaserc",
+        "**/.git/**",
+        "**/.firebase/**",
+        "**/.github/**",
+        "**/.vscode/**",
         "**/.*",
-        "**/node_modules/**"
+        "**/node_modules/**",
+        "**/*.log",
+        "README.md",
+        "LICENSE"
       ]
     }
   ]
