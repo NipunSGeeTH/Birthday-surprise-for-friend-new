@@ -21,6 +21,15 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Preload critical images used during animation playback -->
+  <link rel="preload" as="image" href="src/img/gh.webp">
+  <link rel="preload" as="image" href="src/img/turn-up-volume.webp">
+  <link rel="preload" as="image" href="src/img/swipbtn3tr.webp">
+  <link rel="preload" as="image" href="src/img/iphonewall.webp">
+  <link rel="preload" as="image" href="src/img/iphonehome.webp">
+  <link rel="preload" as="image" href="src/img/calling.webp">
+  <link rel="preload" as="image" href="src/img/birthwall1.webp">
     <!-- Open Graph Meta for Link Previews -->
     <meta property="og:title" content="This is for you from me :)" />
     <meta property="og:description" content="Go and See" />
@@ -257,8 +266,8 @@
                       <div id="but3"></div>
 
 
-                      <audio id="clickS" src="src/music/click.mp3"></audio>
-                      <audio id="ringtone" src="src/music/iphonering.mp3"></audio>
+                      <audio id="clickS" src="src/music/click.mp3" preload="auto"></audio>
+                      <audio id="ringtone" src="src/music/iphonering.mp3" preload="auto"></audio>
                       <div id="ringName"> </div>
 
 
@@ -267,7 +276,7 @@
                   </div>
 
                   <div id="trabsparentrectangle"></div>
-                  <audio id="happybithdaymusic" src="src/music/happybirthday.mp3"></audio>
+                  <audio id="happybithdaymusic" src="src/music/happybirthday.mp3" preload="auto"></audio>
 
                   <div id="fireRectangle"></div>
 
@@ -291,6 +300,15 @@
 
           <script src="text.js"></script>
           <script src="script.js"></script>
+          <script>
+            if ('serviceWorker' in navigator) {
+              window.addEventListener('load', () => {
+                navigator.serviceWorker.register('service-worker.js').catch(err => {
+                  console.warn('Service worker registration failed:', err);
+                });
+              });
+            }
+          </script>
 
 </body>
 

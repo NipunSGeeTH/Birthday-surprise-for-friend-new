@@ -1,3 +1,29 @@
+// Preload all animation images into browser memory cache immediately
+const IMAGES_TO_PRELOAD = [
+    "src/img/gh.webp",
+    "src/img/turn-up-volume.webp",
+    "src/img/swipbtn3tr.webp",
+    "src/img/iphonewall.webp",
+    "src/img/iphonehome.webp",
+    "src/img/calling.webp",
+    "src/img/birthwall1.webp",
+    "src/img/birthwall2.webp",
+    "src/img/birthwall5.webp",
+    "src/img/birthwall4.webp",
+    "src/img/birthwall11.webp"
+];
+
+function preloadImages() {
+    IMAGES_TO_PRELOAD.forEach(src => {
+        const img = new Image();
+        img.src = src;
+        if (img.decode) {
+            img.decode().catch(() => {});
+        }
+    });
+}
+preloadImages();
+
 document.addEventListener("DOMContentLoaded", function() {
     const messages = [
         { id: "message1" },
@@ -20,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // Check if the current message is message4
             if (messages[currentIndex].id === "message4") {
                 const imgElement = document.createElement("img");
-                imgElement.src = "src/img/turn-up-volume.gif"; // Change this to your image path
+                imgElement.src = "src/img/turn-up-volume.webp"; // Change this to your image path
                 imgElement.alt = "Turn up volume";
                 imgElement.id = "volumeImage"; // ID for styling/removal
                 displayTime=5000;
@@ -63,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function() {
         setTimeout(function() {
             document.getElementById("start-button").style.display = "none";
             document.getElementById("full-screen").style.display = "flex";
-            document.getElementsByClassName("px__screen__frame")[0].style.backgroundImage = "url('src/img/gh.jpg')";
+            document.getElementsByClassName("px__screen__frame")[0].style.backgroundImage = "url('src/img/gh.webp')";
             let clickSound = document.getElementById('clickSound');
             clickSound.play();
           
@@ -78,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Add event listener to the action button to show the image
     document.getElementById("swipfirst").addEventListener("touchstart", function() {
-        document.getElementsByClassName("px__screen__frame")[0].style.backgroundImage = "url('src/img/iphonewall.jpg')";
+        document.getElementsByClassName("px__screen__frame")[0].style.backgroundImage = "url('src/img/iphonewall.webp')";
         document.getElementById("swipfirst").style.display = "none";
         document.getElementById("message6").style.display = "none";
 
@@ -191,7 +217,7 @@ function handleInteraction() {
     let ringtone = document.getElementById('ringtone');
     let button = this;
     document.getElementById('but3').style.display = "none";
-    document.getElementsByClassName("px__screen__frame")[0].style.backgroundImage = "url('src/img/iphonehome.jpg')";
+    document.getElementsByClassName("px__screen__frame")[0].style.backgroundImage = "url('src/img/iphonehome.webp')";
 
 
     // Pause clickSound and play clickS
@@ -201,7 +227,7 @@ function handleInteraction() {
     // Change the background image with a delay of 5 seconds
     setTimeout(() => {
         // Change the background image
-        document.getElementsByClassName("px__screen__frame")[0].style.backgroundImage = "url('src/img/calling.png')";
+        document.getElementsByClassName("px__screen__frame")[0].style.backgroundImage = "url('src/img/calling.webp')";
         
         // Set the text content to globalName and display it
         document.getElementById('ringName').textContent = globalName + " 😊";
@@ -235,18 +261,18 @@ document.getElementById('trabsparentrectangle').addEventListener('click', functi
     // Pause clickSound and ringtone, play happybithdaymusic
     document.getElementById('ringName').style.display="none";
     document.getElementById('trabsparentrectangle').style.display = "none";
-    document.getElementsByClassName("px__screen__frame")[0].style.backgroundImage = "url('src/img/birthwall1.jpg')"
+    document.getElementsByClassName("px__screen__frame")[0].style.backgroundImage = "url('src/img/birthwall1.webp')"
     clickS.pause();
     ringtone.pause();
     happybithdaymusic.play();
 
     // Array of background images
     let images = [
-        "url('src/img/birthwall2.jpg')",
-        "url('src/img/birthwall5.jpg')",
-        "url('src/img/birthwall4.jpg')",
+        "url('src/img/birthwall2.webp')",
+        "url('src/img/birthwall5.webp')",
+        "url('src/img/birthwall4.webp')",
         
-        "url('src/img/birthwall11.jpg')",
+        "url('src/img/birthwall11.webp')",
         
     ];
     
@@ -279,7 +305,7 @@ function handleInteraction2() {
     let happybirthdaymusic = document.getElementById('happybithdaymusic');
     document.getElementById('fireRectangle').style.display = "none";
     happybirthdaymusic.pause();
-    document.getElementsByClassName("px__screen__frame")[0].style.backgroundImage = "url('src/img/gh.jpg')";
+    document.getElementsByClassName("px__screen__frame")[0].style.backgroundImage = "url('src/img/gh.webp')";
 
     const messageslast = GlobalMesssageLast;
     let delay = 5000; // Delay between messages

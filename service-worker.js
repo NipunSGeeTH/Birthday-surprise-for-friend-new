@@ -1,14 +1,16 @@
-const CACHE_NAME = 'saveImagesAsCache-v1';
+const CACHE_NAME = 'saveImagesAsCache-v3';
 const IMAGES_TO_CACHE = [
-  'src/img/birthwall2.jpg',
-  'src/img/birthwall5.jpg',
-  'src/img/birthwall4.jpg',
-  'src/img/birthwall11.jpg',
-  'src/img/birthwall1.jpg',
-  'src/img/calling.png',
-  'src/img/iphonehome.jpg',
-  'src/img/iphonewall.jpg',
-  'src/img/gh.jpg'
+  'src/img/birthwall2.webp',
+  'src/img/birthwall5.webp',
+  'src/img/birthwall4.webp',
+  'src/img/birthwall11.webp',
+  'src/img/birthwall1.webp',
+  'src/img/calling.webp',
+  'src/img/iphonehome.webp',
+  'src/img/iphonewall.webp',
+  'src/img/gh.webp',
+  'src/img/turn-up-volume.webp',
+  'src/img/swipbtn3tr.webp'
 ];
 
 const MAX_CACHE_AGE = 30 * 24 * 60 * 60 * 1000; // 30 days in milliseconds
